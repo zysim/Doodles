@@ -1,0 +1,51 @@
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source (has ref to codecs parameter page) -->
+<!-- https://www.youtube.com/watch?v=iX_QyjdctsQ&t=9m18s -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://interactive-examples.mdn.mozilla.net/media/cc0-images/surfer-240-200.jpg"
+      type="image/jpg"
+    />
+    <title>Picture Test</title>
+  </head>
+  <body>
+    <picture>
+      <!-- First option browser likes in this list it'll render it -->
+      <!--
+            https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
+            Particularly look at APNG, AVIF, and WEBP. All new image formats that can do animations too.
+            Performance-wise AVIF > WEBP
+            Image size capabilities APNG = AVIF > WEBP
+         -->
+      <!-- <source srcset="apng_image_here.apng" type="image/apng">  // commented out cuz it'll actually break -->
+      <!--
+        `srcset` can be specified as a comma-separated list of "<path> <size>". The biggest one that can fit on-screen is chosen.
+        Let the first one start off at 4000w, then go down to 1000w. It'll eventually use the second option which is smaller.
+        That being said, it's kinda weird cuz in the vid tutorial (refer top) bigger number === bigger size
+        The <img>'s `width` prop will override the width of the image tho
+       -->
+      <source
+        srcset="assets/red_panda.avif 1000w, assets/red_panda.avif 10000w"
+        type="image/avif"
+        media="(min-width: 1200px)"
+      >
+      <source
+        srcset="
+          https://interactive-examples.mdn.mozilla.net/media/cc0-images/surfer-240-200.jpg
+        "
+        media="(min-width: 800px)"
+      >
+      <img
+        src="https://interactive-examples.mdn.mozilla.net/media/cc0-images/painted-hand-298-332.jpg"
+        alt="Picture of a hand covered in paint"
+      />
+    </picture>
+  </body>
+</html>

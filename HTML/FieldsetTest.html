@@ -1,0 +1,55 @@
+<!-- Fieldset > (Progress + Datalist) -->
+
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist -->
+<!-- https://www.youtube.com/watch?v=iX_QyjdctsQ&t=1m53s to 4m52s-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fieldset Test</title>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Favourites</legend>
+
+        <div>
+          <div>
+            <label>File Upload</label>
+          </div>
+          <!-- Text element is more for screen readers -->
+          <progress value="50" max="100">50%</progress>
+        </div>
+
+        <br />
+
+        <div>
+          <div>
+            <label for="colour-label">Colour</label>
+          </div>
+          <input id="colour-label" type="color" name="colour" id="colour" />
+        </div>
+
+        <br />
+
+        <div>
+          <label for="fruit-list-label">Fruit</label>
+          <input type="text" id="fruit-list-label" list="fruit-list" />
+          <datalist id="fruit-list">
+            <option value="Banana" />
+            <option value="Strawberry" />
+            <option value="Blackberry" />
+            <option value="Blueberry" />
+            <option value="Peach" />
+            <option value="Pear" />
+          </datalist>
+        </div>
+      </fieldset>
+    </form>
+  </body>
+</html>
