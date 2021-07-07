@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intersection Observer</title>
+
+    <link rel="stylesheet" href="./css/intersectionObserver.css" />
+  </head>
+  <body>
+    <main>
+      <div id="container">
+        <div id="long-component">
+          <div id="target"></div>
+        </div>
+      </div>
+      <article>
+        <section>
+          <h1>Intersection Observer Test</h1>
+          <p>
+            <strong>TL;DR Don't use this for high-perf applications.</strong>
+          </p>
+          <p>
+            Testing out the Intersection Observer API. It works pretty well,
+            with a few caveats, especially when scrolling fast:
+          </p>
+          <ol>
+            <li>
+              Don't necessarily trust <code>isIntersecting</code> when using
+              <code>threshold</code>
+            </li>
+            <li>Don't expect it to call the instant it hits a threshold</li>
+          </ol>
+          <p>These two points are explained below.</p>
+        </section>
+        <section id="elaboration">
+          <h3>Don't Trust <code>isIntersecting</code></h3>
+          <p>
+            First off,
+            <code>IntersectionObserverEntry.isIntersecting === false</code>
+            does <em>not</em> mean that it isn't intersecting at a threshold. It
+            simply means that the target element isn't intersecting with its
+            target at all. In theory. In practice,
+            <code>IntersectionObserverEntry.isIntersecting</code> can show
+            <code>false</code>, even when you can still see bits of the target.
+            More importantly is my first point. Just don't depend on it.
+          </p>
+
+          <h3>Don't Expect Observer to Call At Threshold</h3>
+          <p>
+            The <code>IntersectionObserver</code> isn't designed to be a
+            high-perf thing. Its design philosophy is stated in the MDN docs,
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API"
+              >a few paragprahs in at the start of the article</a
+            >:
+          </p>
+          <blockquote>
+            One thing the Intersection Observer API can't tell you: the exact
+            number of pixels that overlap or specifically which ones they are...
+          </blockquote>
+          <p>
+            And here too, at the start of
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#thresholds"
+              >thresholds</a
+            >:
+          </p>
+          <blockquote>
+            Rather than reporting every infinitesimal change in how much a
+            target element is visible, the Intersection Observer API uses
+            thresholds.
+          </blockquote>
+          <p>
+            Specifically, even when you pass the threshold, especially when
+            you're scrolling quickly, it doesn't ping you instantly. It does so
+            the next time it's got breathing room to do so. So don't use this
+            API to do high-perf stuff.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <footer>
+      Written at <time datetime="2021-07-07T23:09:41.000+0800">07/07/2021</time>
+      <!-- <address>
+        <a href="mailto:<email_here>"><email_here></a>
+        <a href="tel:<phone_number_here>"> <phone_number_here> </a>
+      </address> -->
+    </footer>
+
+    <script src="./js/intersectionObserver.js"></script>
+  </body>
+</html>

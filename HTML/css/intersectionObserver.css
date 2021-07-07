@@ -1,0 +1,68 @@
+:root {
+  --body-offset: 1.5rem;
+  --body-before-padding-vertical: 0.5rem;
+  --body-before-padding-horizontal: 1.5rem;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+}
+
+body {
+  width: 800px;
+}
+
+#container {
+  width: 100%;
+  height: 500px;
+  border: solid 1px hsl(0, 0%, 80%);
+  margin-top: var(--body-offset);
+  overflow-y: scroll;
+}
+
+#container::before {
+  content: 'Intersection Observer';
+  position: absolute;
+  margin-top: calc(
+    -0.5 * var(--body-before-padding-vertical) - 0.5 * var(--body-offset)
+  );
+  margin-left: 1rem;
+  background-color: hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 97%);
+  padding: var(--body-before-padding-vertical)
+    var(--body-before-padding-horizontal);
+}
+
+#long-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 1500px;
+  background-color: hsl(35, 70%, 95%);
+}
+
+#target {
+  width: 200px;
+  height: 200px;
+  background-color: hsl(30, 60%, 70%);
+}
+
+code {
+  background-color: hsl(0, 0%, 95%);
+  padding: 0rem 0.5rem;
+}
+
+#elaboration {
+  counter-reset: point;
+}
+
+#elaboration > h3 {
+  counter-increment: point;
+}
+
+#elaboration > h3::before {
+  content: '#' counter(point) '.    ';
+  background-color: hsl(0, 0%, 85%);
+}
