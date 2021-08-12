@@ -1,0 +1,16 @@
+{
+  "name": "typings",
+  "version": "0.0.0",
+  "description": "Working with declaration files",
+  "main": "index.js",
+  "author": "Sim",
+  "license": "AGPL-3.0-or-newer",
+  "private": true,
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  },
+  "scripts": {
+    "start": "tsc && node build/index.js"
+  },
+  "type": "module"
+}
