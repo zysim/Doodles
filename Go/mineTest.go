@@ -2,13 +2,13 @@ package main
 import "fmt"
 
 func stuff() {
-anArray := make([]int, 2)
+  anArray := make([]int, 2)
   anArray[0] = 0
   anArray[1] = 1
-appendedArray := append(anArray, 3, [2]int{4, 5})
+  appendedArray := append(anArray, 3, [2]int{4, 5})
 
-myMap := map[string]int{"Test": 1}
-myMap["Another"] = 2
+  myMap := map[string]int{"Test": 1}
+  myMap["Another"] = 2
 }
 
 
@@ -27,3 +27,4 @@ func differentTypes(a string, b int) (string, int) {
 func main() {
     // fmt.Println(t("1", 2))
 }
+
